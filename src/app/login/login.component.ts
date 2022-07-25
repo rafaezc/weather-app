@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthGuardService } from '../auth/auth-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, public router: Router) { 
+  constructor(private formBuilder: FormBuilder, public router: Router, private authGuard: AuthGuardService) { 
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -29,14 +30,15 @@ export class LoginComponent implements OnInit {
       val.username ? console.log("user: ", val.username) : '';
       val.password ? console.log("pass: ", val.password) : '';
     });
-    
+    console.log(this.authGuard.isAuthenticated);
   }
 
   login() {
 
     if (this.registeredUsers[0].user === this.loginForm.get('username')?.value && 
-        this.registeredUsers[0].pass === this.loginForm.get('password')?.value) {
-          this.router.navigate(['/weather-page']);
+      this.registeredUsers[0].pass === this.loginForm.get('password')?.value) {
+        this.authGuard.isAuthenticated = true;
+        this.router.navigate(['/weather-page']);
     } else {
       // set an alert or use some lib to display messages
       console.log("bla");
@@ -44,8 +46,8 @@ export class LoginComponent implements OnInit {
     
   }
 
-
   ngOnDestroy(): void {
-
+    this.authGuard.isAuthenticated = false;
   }
+  
 }
