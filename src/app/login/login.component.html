@@ -1,6 +1,6 @@
 <div class="outside-container">
     <div class="container">
-        <div class="row d-flex justify-content-center">
+        <div class="row positioner">
             <div class="col-sm-12 col-md-9 col-lg-7 col-xl-6">
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
@@ -8,12 +8,12 @@
                             <h2 class="fw-bold mb-4">BUILDERS WEATHER APP</h2> <!--CHANGE LATER-->
                             <div class="mb-3">
                                 <label for="text" class="form-label">USERNAME</label>
-                                <input type="text" class="form-control" id="text" placeholder="Enter your username" formControlName="username">
+                                <input type="text" class="form-control" id="username" placeholder="Enter your username" formControlName="username">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">PASSWORD</label>
                                 <input type="password" class="form-control" id="password" placeholder="Enter your password" formControlName="password">
-                            </div> <!--PUT THE MAGIC EYE-->
+                            </div>
                             <div class="mt-4 d-grid">
                                 <button class="btn btn-primary" (click)="login()">Login</button>
                             </div>
@@ -24,3 +24,4 @@
         </div>
     </div>
 </div>
+<ngx-spinner type="ball-beat"></ngx-spinner>

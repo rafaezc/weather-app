@@ -1,1 +1,83 @@
-<p>weather works!</p>
+<div class="outisde-conatainer">
+    <div class="container">
+        <div class="row positioner">
+            <div class="col-sm-12 col-md-9 col-lg-7 col-xl-6">
+                <form [formGroup]="searchAddress">
+                    <div class="row mt-4 mb-3">
+                        <div class="col-10">
+                            <input type="text" class="form-control" id="address" placeholder="Insert an address to search" formControlName="address">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                    <!-- (click)="search()" -->
+                </form>
+                <div class="city-name">{{ weather.weatherInfo?.name }}, {{ weather.weatherInfo?.sys?.country }}</div>
+                <div class="temperature">
+                    <div class="row">
+                        <div class="col-8 temperature-now">{{ weather.weatherInfo?.main?.temp | number: '1.0-0' }}°</div>
+                        <div class="col-4 temperature-minmax">
+                            <div class="col-12 mb-2">{{ weather.weatherInfo?.main?.temp_max | number: '1.0-0' }}°</div>
+                            <div class="col-12 mt-2">{{ weather.workAroundMinTemp | number: '1.0-0' }}°</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="extra-info">{{ weather.workAroundWeather }}</div>
+                <div class="extra-info">Feels Like {{ weather.weatherInfo?.main?.feels_like | number: '1.0-0' }}°</div>
+                <img *ngIf="weather.workAroundWeather === 'Clear'" class="img-fluid" src="assets/img/sunny.png" alt="">
+                <img *ngIf="weather.workAroundWeather === 'Rain'" class="img-fluid" src="assets/img/rainy.png" alt="">
+                <img *ngIf="weather.workAroundWeather === 'Clouds'" class="img-fluid" src="assets/img/cloudy.png" alt=""> 
+                <div class="week-forecast">
+                    <div class="week-temp">
+                        <div class="week-days">SUN</div>
+                        <div class="week-days">MON</div>
+                        <div class="week-days">TUE</div>
+                        <div class="week-days">WED</div>
+                        <div class="week-days">THU</div>
+                        <div class="week-days">FRI</div>
+                        <div class="week-days">SAT</div>
+                    </div>
+                    <div class="week-temp">
+                        <div class="week-days">30°</div>
+                        <div class="week-days">24°</div>
+                        <div class="week-days">23°</div>
+                        <div class="week-days">21°</div>
+                        <div class="week-days">24°</div>
+                        <div class="week-days">27°</div>
+                        <div class="week-days">26°</div>
+                    </div>
+                    <div class="week-temp">
+                        <div class="week-days">22°</div>
+                        <div class="week-days">17°</div>
+                        <div class="week-days">13°</div>
+                        <div class="week-days">19°</div>
+                        <div class="week-days">16°</div>
+                        <div class="week-days">22°</div>
+                        <div class="week-days">23°</div>
+                    </div>
+                </div>
+                <div class="wind-humidity-rain">
+                    <div class="row">
+                        <div class="col-4">
+                            <img class="size-adjust col-12" src="assets/icons/wind.png" alt="">
+                            <div class="col-12">{{ weather.workAroundSpeed | number: '1.0-0' }} km/h</div>
+                            <div class="col-12">Wind Speed</div>
+                        </div>
+                        <div class="col-4">
+                            <img class="size-adjust icol-12" src="assets/icons/humidity.png" alt="">
+                            <div class="col-12">{{ weather.weatherInfo?.main?.humidity }}%</div>
+                            <div class="col-12">Humidity</div>
+                        </div>
+                        <div class="col-4">
+                            <img class="size-adjust icol-12" src="assets/icons/rainmm.png" alt="">
+                            <div class="col-12">{{ weather.workAroundRain }} mm</div>
+                            <div class="col-12">Precipitation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner type="ball-clip-rotate-multiple"></ngx-spinner>
