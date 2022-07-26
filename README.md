@@ -2,10 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
 
-## Live version
-
-This project can be accessed by the following link: https://weather-app-rust-phi.vercel.app/
-
 ## Before running the development server
 
 Run `npm i` to install all needed dependencies to this project run smoothly.
