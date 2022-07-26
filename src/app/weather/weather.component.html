@@ -1,4 +1,4 @@
-<div class="outisde-conatainer">
+<div class="outisde-container weather-page ">
     <div class="container">
         <div class="row positioner">
             <div class="col-sm-12 col-md-9 col-lg-7 col-xl-6">
@@ -6,12 +6,12 @@
                     <div class="row mt-4 mb-3">
                         <div class="col-10">
                             <input type="text" class="form-control" id="address" placeholder="Insert an address to search" formControlName="address">
+                            <small class="text-danger" *ngIf="searchAddress.get('address')?.hasError('required')">This field is required</small>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-primary">Search</button>
+                            <button class="btn btn-primary" (click)="search()" [disabled]="!searchAddress.valid">Search</button>
                         </div>
                     </div>
-                    <!-- (click)="search()" -->
                 </form>
                 <div class="city-name">{{ weather.weatherInfo?.name }}, {{ weather.weatherInfo?.sys?.country }}</div>
                 <div class="temperature">
@@ -76,8 +76,9 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="weather.alert" [class]="weather.classVar" role="alert">{{ weather.message }}!</div>
             </div>
         </div>
     </div>
 </div>
-<ngx-spinner type="ball-clip-rotate-multiple"></ngx-spinner>
+<ngx-spinner type="ball-scale-multiple" bdColor="rgba(0, 0, 0, 0.8)" size ="medium" color="#fff" [fullScreen]="true"></ngx-spinner>

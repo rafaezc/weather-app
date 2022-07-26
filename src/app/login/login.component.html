@@ -5,23 +5,26 @@
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
                         <form [formGroup]="loginForm" class="mb-3 mt-3 md-4">
-                            <h2 class="fw-bold mb-4">BUILDERS WEATHER APP</h2> <!--CHANGE LATER-->
+                            <h2 class="fw-bold mb-4">BUILDERS WEATHER APP</h2> 
                             <div class="mb-3">
                                 <label for="text" class="form-label">USERNAME</label>
                                 <input type="text" class="form-control" id="username" placeholder="Enter your username" formControlName="username">
+                                <small class="text-danger" *ngIf="loginForm.get('username')?.hasError('required')">This field is required</small>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">PASSWORD</label>
                                 <input type="password" class="form-control" id="password" placeholder="Enter your password" formControlName="password">
+                                <small class="text-danger" *ngIf="loginForm.get('password')?.hasError('required')">This field is required</small>
                             </div>
                             <div class="mt-4 d-grid">
-                                <button class="btn btn-primary" (click)="login()">Login</button>
+                                <button class="btn btn-primary" (click)="login()" [disabled]="!loginForm.valid">Login</button>
                             </div>
                         </form>
                     </div>
                 </div>
+                <div *ngIf="alert" class="alert alert-danger mt-5" role="alert">Please verify the username and/or the password inserted!</div>
             </div>
         </div>
     </div>
 </div>
-<ngx-spinner type="ball-beat"></ngx-spinner>
+<ngx-spinner type="ball-scale-multiple" bdColor="rgba(0, 0, 0, 0.8)" size ="medium" color="#fff" [fullScreen]="true"></ngx-spinner>

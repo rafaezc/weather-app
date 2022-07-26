@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
       pass: '123'
     }
   ];
+  
+  alert: boolean = false;
 
   constructor(private formBuilder: FormBuilder, public router: Router, private authGuard: AuthGuardService, private spinner: NgxSpinnerService) { 
     this.loginForm = this.formBuilder.group({
@@ -27,11 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm.valueChanges.subscribe(val => {
-      val.username ? console.log("user: ", val.username) : '';
-      val.password ? console.log("pass: ", val.password) : '';
-    });
-    console.log(this.authGuard.isAuthenticated);
+
   }
 
   login() {
@@ -43,8 +41,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/weather-page']);
         
     } else {
-      // set an alert or use some lib to display messages
-      console.log("bla");
+      this.alert = true;
+      setTimeout(() => {
+        this.alert = false;
+      }, 3000);
       this.spinner.hide();
     }
     
