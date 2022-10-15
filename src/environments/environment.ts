@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  weatherApiKey: 'bf5c438f70d77dc96129e5133f74b10e',
+  gpsApiKey: 'c98d843d39b648db955c3864876a5510',
+  weaherCompleteUrl: 'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&exclude=hourly,daily&appid={APIkey}&units=metric',
+  gpsCompleteUrl: 'http://api.positionstack.com/v1/forward?access_key=YOUR_ACCESS_KEY&query=YOUR_ADDRESS&limit=1&output=json'
 };
 
 /*

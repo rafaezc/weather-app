@@ -27,7 +27,8 @@
                 <div class="extra-info">Feels Like {{ weather.weatherInfo?.main?.feels_like | number: '1.0-0' }}°</div>
                 <img *ngIf="weather.workAroundWeather === 'Clear'" class="img-fluid" src="assets/img/sunny.png" alt="">
                 <img *ngIf="weather.workAroundWeather === 'Rain'" class="img-fluid" src="assets/img/rainy.png" alt="">
-                <img *ngIf="weather.workAroundWeather === 'Clouds'" class="img-fluid" src="assets/img/cloudy.png" alt=""> 
+                <img *ngIf="weather.workAroundWeather === 'Clouds'" class="img-fluid" src="assets/img/cloudy.png" alt="">
+                <img *ngIf="weather.workAroundWeather !== 'Clouds' && weather.workAroundWeather !== 'Rain' && weather.workAroundWeather !== 'Clear'" class="img-fluid" src="assets/img/sunbclouds.png" alt="">  
                 <div class="week-forecast">
                     <div class="week-temp">
                         <div class="week-days">SUN</div>
