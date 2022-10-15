@@ -2,9 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
 
+## Before running the development server
+
+Run `npm i` to install all needed dependencies to this project run smoothly.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Logging in
+
+Use the username `master` and password `123` in the login page to gain access to the app.
 
 ## Code scaffolding
 
